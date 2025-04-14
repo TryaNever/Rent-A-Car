@@ -68,5 +68,30 @@
     </div>
 
 </div>
+<div class="w-full flex flex-col p-10">
+
+    <div class="flex justify-between mt-20"><h2 class="text-4xl font-bold">Choose the car that suits you</h2><a href="/vehicule">View All →</a></div>
+    <div class="w-full flex flex-wrap justify-between">
+    @foreach($vehicules AS $vehicule)
+        <div class="w-3/10 p-5 m-5 bg-[#FAFAFA] rounded-2xl flex flex-col capitalize">
+            <img src="{{ $vehicule->photo }}" alt="{{ $vehicule->model }}">
+            <div>
+                <div class="flex justify-between">
+                    <div>
+                        <h4 class="text-2xl font-bold">{{ $vehicule->brand }}</h4>
+                        <p>{{$vehicule->vehicule_type}}</p>
+                    </div>
+                    <div><p class="text-[#5937E0] font-bold text-2xl">$ {{ $vehicule->price_per_day }}</p>
+                        <p>per day</p></div>
+                </div>
+                <div class="mt-5 flex justify-between"><p>{{ $vehicule->transmission }}</p>
+                    <p>{{ $vehicule->fuel_type }}</p>
+                    <p>{{ $vehicule->air_conditionne }}</p></div>
+            </div>
+            <a href="/vehicule/{{ $vehicule->id }}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
+        </div>
+    @endforeach
+    </div>
+</div>
 </body>
 </html>
