@@ -11,9 +11,9 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 </head>
 <body class="flex flex-col items-center">
-    <div class="w-full flex flex-wrap justify-between">
+    <div class="w-[80%] flex flex-wrap justify-between">
         @foreach($vehicules AS $vehicule)
-            <div class="w-3/10 p-5 m-5 bg-[#FAFAFA] rounded-2xl flex flex-col capitalize">
+            <div class="w-3/10 p-4 m-4 bg-[#FAFAFA] rounded-2xl flex flex-col capitalize">
                 <img src="{{ $vehicule->photo }}" alt="{{ $vehicule->model }}">
                 <div>
                     <div class="flex justify-between">

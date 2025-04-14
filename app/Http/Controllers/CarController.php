@@ -53,7 +53,6 @@ class CarController extends Controller
                 DB::raw("IF(vehicule.air_conditioning = 1, 'Air conditionné', 'Sans climatisation') as air_conditionne")
             )
             ->where('vehicule_photo.display_order', 0)
-            ->limit(6)
             ->get();
 
 
