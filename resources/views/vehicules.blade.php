@@ -6,12 +6,83 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Laravel</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 </head>
 <body class="flex flex-col items-center">
-    <div class="w-[80%] flex flex-wrap justify-between">
+<h2 class="text-5xl font-bold">Select a vehicle group</h2>
+<form class="space-y-6">
+@csrf
+    <div>
+        <h2 class="text-sm font-semibold mb-2">Type de véhicule</h2>
+        <div class="flex flex-wrap gap-2">
+            <label class="cursor-pointer">
+                <input type="radio" name="vehiculeType" value="" class="sr-only peer" checked>
+                <div class="px-4 py-2 rounded-full text-sm font-medium
+                    bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+                    All vehicles
+                </div>
+            </label>
+
+            @foreach ($vehiculeTypes as $type)
+                <label class="cursor-pointer">
+                    <input type="radio" name="vehiculeType" value="{{ $type }}" class="sr-only peer">
+                    <div class="px-4 py-2 rounded-full text-sm font-medium
+                        bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+                        {{ ucfirst($type) }}
+                    </div>
+                </label>
+            @endforeach
+        </div>
+    </div>
+    <div>
+        <h2 class="text-sm font-semibold mb-2">Type d'énergie</h2>
+        <div class="flex flex-wrap gap-2">
+            <label class="cursor-pointer">
+                <input type="radio" name="energieType" value="" class="sr-only peer" checked>
+                <div class="px-4 py-2 rounded-full text-sm font-medium
+                    bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+                    All energy type
+                </div>
+            </label>
+
+            @foreach ($energieTypes as $energie)
+                <label class="cursor-pointer">
+                    <input type="radio" name="energieType" value="{{ $energie }}" class="sr-only peer">
+                    <div class="px-4 py-2 rounded-full text-sm font-medium
+                        bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+                        {{ ucfirst($energie) }}
+                    </div>
+                </label>
+            @endforeach
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-sm font-semibold mb-2">Type de boîte</h2>
+        <div class="flex flex-wrap gap-2">
+            <label class="cursor-pointer">
+                <input type="radio" name="typeGear" value="" class="sr-only peer" checked>
+                <div class="px-4 py-2 rounded-full text-sm font-medium
+                    bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+                    All type of gear
+                </div>
+            </label>
+
+            @foreach ($typeGears as $gear)
+                <label class="cursor-pointer">
+                    <input type="radio" name="typeGear" value="{{ $gear }}" class="sr-only peer">
+                    <div class="px-4 py-2 rounded-full text-sm font-medium
+                        bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+                        {{ ucfirst($gear) }}
+                    </div>
+                </label>
+            @endforeach
+        </div>
+    </div>
+</form>
+
+    <div class="w-[80%] flex flex-wrap justify-between" id="containerVehicules">
         @foreach($vehicules AS $vehicule)
             <div class="w-3/10 p-4 m-4 bg-[#FAFAFA] rounded-2xl flex flex-col capitalize">
                 <img src="{{ $vehicule->photo }}" alt="{{ $vehicule->model }}">
@@ -32,5 +103,7 @@
             </div>
         @endforeach
     </div>
+    <script src="{{ asset('js/vehiculeFilter.js') }}"></script>
+
 </body>
 </html>
