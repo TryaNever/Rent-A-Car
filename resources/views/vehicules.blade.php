@@ -103,7 +103,7 @@
             </div>
         @endforeach
     </div>
-    <script src="{{ asset('js/vehiculeFilter.js') }}"></script>
+v    <script src="{{ asset('js/vehiculeFilter.js') }}"></script>
 
 </body>
 </html>
