@@ -57,6 +57,6 @@ class CarController extends Controller
             ->get();
 
 
-        return view('', ['vehicules' => $vehicules]);
+        return view('vehicules', ['vehicules' => $vehicules]);
     }
 }
