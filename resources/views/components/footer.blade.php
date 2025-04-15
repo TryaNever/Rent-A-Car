@@ -1,4 +1,4 @@
-<div class="flex justify-around w-full px-20 mb-20">
+<div class="flex justify-around w-full px-20 mb-20 mt-30">
     <div class="flex items-center"><img src="{{ asset('images/carBG.png') }}" alt="logo" class="h-10 saturate-0">
         <h3 class="font-bold">Car Rental</h3></div>
     <div class="flex items-center">
