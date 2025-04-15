@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Mail\ReservationVehicule;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
-    function store(Request $request)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'email' => 'required|email',
@@ -17,9 +19,11 @@ class ReservationController extends Controller
             'endDate' => 'required|date',
         ]);
 
-        $price = DB::table('vehicule')->select('vehicule.price_per_day')->where('id', $validatedData['id'])->get();
-        $day = date_diff(date_create($validatedData['startDate']), date_create($validatedData['endDate']));
-        $priceTotal = floatval($price[0]->price_per_day) * ($day->days+1);
+        $price = DB::table('vehicule')->where('id', $validatedData['id'])->value('price_per_day');
+
+        $dayCount = date_diff(date_create($validatedData['startDate']), date_create($validatedData['endDate']))->days + 1;
+        $priceTotal = floatval($price) * $dayCount;
+
         DB::table('reservation')->insert([
             'email' => $validatedData['email'],
             'vehicule_id' => $validatedData['id'],
@@ -29,6 +33,8 @@ class ReservationController extends Controller
             'status' => 'pending',
             'total_price' => $priceTotal
         ]);
+
+            Mail::to('apernette@edenschool.fr')->send(new ReservationVehicule($validatedData['id']));
 
         return response()->json(['success' => 'You reservation is confirmed']);
     }
