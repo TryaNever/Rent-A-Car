@@ -10,11 +10,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function spawnPrice() {
+    function spawnPrice(error = "") {
         let pPrice = document.querySelector('#price')
-
+if (error) {
+    return pPrice.innerText = ''
+}
         let dif = new Date(document.querySelector('#endDate').value) - new Date(document.querySelector('#startDate').value);
-        console.log(dif)
+
+        dif = Math.ceil(dif / 86400000) + 1
+        pPrice.textContent = `${pricePerDay * dif} $ for ${dif} days`
     }
 
     let reservedDates = dates;
@@ -27,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         onChange: function (selectedDates, dateStr, instance) {
             if (reservedDates.includes(dateStr)) {
                 instance.clear();
+                spawnPrice('error')
                 createError("Cette date est déjà réservée. Veuillez choisir une autre date.");
             }
             validateDates();
@@ -39,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         onChange: function (selectedDates, dateStr, instance) {
             if (reservedDates.includes(dateStr)) {
                 instance.clear();
+                spawnPrice('error')
                 createError("Cette date est déjà réservée. Veuillez choisir une autre date.");
             }
             validateDates();
@@ -54,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let endDate = new Date(endDateValue);
             if (startDate >= endDate) {
                 document.getElementById('endDate').value = '';
+                spawnPrice('error')
                 return createError("La date de fin doit être après la date de début.");
             } else {
                 for (let i = 0; i < reservedDates.length; i++) {
@@ -61,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if ((startDate <= reservedDate && endDate >= reservedDate)) {
                         document.getElementById('startDate').value = '';
                         document.getElementById('endDate').value = '';
+                        spawnPrice('error')
                         return createError("Le créneau que vous avez sélectionné chevauche une réservation existante. Veuillez choisir un autre créneau.");
                     }
                 }
