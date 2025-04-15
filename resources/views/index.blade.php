@@ -70,7 +70,7 @@
 </div>
 <div class="w-full flex flex-col p-10">
 
-    <div class="flex justify-between mt-20"><h2 class="text-4xl font-bold">Choose the car that suits you</h2><a href="/vehicule">View All →</a></div>
+    <div class="flex justify-between mt-20"><h2 class="text-4xl font-bold">Choose the car that suits you</h2><a href="/vehicules">View All →</a></div>
     <div class="w-full flex flex-wrap justify-between">
     @foreach($vehicules AS $vehicule)
         <div class="w-3/10 p-5 m-5 bg-[#FAFAFA] rounded-2xl flex flex-col capitalize">
@@ -88,7 +88,7 @@
                     <p>{{ $vehicule->fuel_type }}</p>
                     <p>{{ $vehicule->air_conditionne }}</p></div>
             </div>
-            <a href="/vehicule/{{ $vehicule->id }}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
+            <a href="/vehicules/{{ $vehicule->id }}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
         </div>
     @endforeach
     </div>

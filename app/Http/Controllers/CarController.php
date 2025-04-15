@@ -86,13 +86,12 @@ class CarController extends Controller
                 'vehicule_type.name as vehicule_type',
                 DB::raw("IF(vehicule.air_conditioning = 1, 'Yes', 'No') as air_conditionne")
             )
-            ->where('vehicule_photo.display_order', 0)->where('vehicule.id', $id)->get();
+            ->where('vehicule.id', $id)->orderBy('vehicule_photo.display_order')->get();
 
         $photo = DB::table('vehicule_photo')->where('vehicule_id', $id)->get();
         if ($data->isEmpty()) {
             return abort(404);
         }
-        var_dump($data);
         return view('vehiculeDetail', ['vehicule' => $data, 'photos' => $photo]);
     }
 
@@ -126,7 +125,7 @@ class CarController extends Controller
         if (!empty($data['typeGear'])) {
             $query->where('vehicule.transmission', $data['typeGear']);
         }
-        $vehicules = $query->get();
+        $vehicules = $query->orderBy('vehicule_photo.display_order')->get();
 
         return response()->json($vehicules);
     }

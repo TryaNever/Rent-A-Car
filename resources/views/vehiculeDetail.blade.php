@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 </head>
-<body class="flex flex-col items-center mx-20">
+<body class="flex flex-col items-center mx-20 min-h-sreen">
 <div class="w-full h-[50vh] flex justify-between mt-20">
     <div class="flex flex-col justify-between w-1/2">
         <h3 class="text-3xl font-bold">{{ $vehicule[0]->brand }}</h3>
@@ -19,8 +19,7 @@
         <img src="{{ asset('images/carBG.png') }}" alt="" class="h-[25vh] object-contain">
         <div class="flex">
             @foreach($photos AS $photo)
-                <img src="{{ $photo->image_url }}" alt="" class="border rounded-3xl sepia mr-3 w-40 object-cover">
-                <img src="{{ $photo->image_url }}" alt="" class="border rounded-3xl sepia mr-3 w-40 object-cover">
+                <img src="{{ $photo->image_url }}" alt="" class="border rounded-3xl sepia mr-3 w-40 object-cover cursor-pointer img-carousel">
             @endforeach
         </div>
     </div>
@@ -58,10 +57,12 @@
                 <p class="capitalize text-[#00000099]">{{ $vehicule[0]->seats }}</p>
             </div>
         </div>
-        <a href="/vehicule/{{ $vehicule[0]->id }}/reservation" class="bg-[#5937E0] text-white text-center rounded-xl py-3 px-20 mt-4">Rent a car</a>
+        <a href="/vehicules/{{ $vehicule[0]->id }}/reservation" class="bg-[#5937E0] text-white text-center rounded-xl py-3 px-20 mt-4">Rent a car</a>
     </div>
 
 </div>
 <x-footer></x-footer>
+<script src="{{ asset('js/vehiculeCarousel.js') }}"></script>
+
 </body>
 </html>
