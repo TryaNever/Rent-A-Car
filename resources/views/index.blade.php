@@ -20,7 +20,7 @@
             <p class="my-5 font-normal text-lg">Rent a car in just a few taps. Fast, flexible, and affordable, your next
                 ride is always ready, wherever
                 and whenever you need it.</p>
-            <a href="" class="my-5 bg-[#FF9E0C] text-white rounded-xl p-2">View all cars</a>
+            <a href="/vehicules" class="my-5 bg-[#FF9E0C] text-white rounded-xl p-2">View all cars</a>
         </div>
         <form method="get" class="w-[40%] m-5 bg-white rounded-2xl p-10 flex flex-col">
             @csrf
