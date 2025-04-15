@@ -151,9 +151,27 @@ class CarController extends Controller
             ->where('vehicule_photo.display_order', 0)->where('vehicule.id', $id)->get();
         $photo = DB::table('vehicule_photo')->where('vehicule_id', $id)->get();
 
+        $reservations = DB::table('vehicule')->join('reservation', 'vehicule.id', '=', 'reservation.vehicule_id')->select('reservation.start_date', 'reservation.end_date')->where('vehicule_id', $id)->get();
+
+        $unavailableDates = [];
+        foreach ($reservations as $res) {
+            $period = new \DatePeriod(
+                new \DateTime($res->start_date),
+                new \DateInterval('P1D'),
+                (new \DateTime($res->end_date))->modify('+1 day')
+            );
+            foreach ($period as $date) {
+                $unavailableDates[] = $date->format('Y-m-d');
+            }
+        }
+        $date = [];
+        foreach ($unavailableDates as $res) {
+            $date[] = $res;
+        }
+
         if ($data->isEmpty()) {
             return abort(404);
         }
-        return view('reservation', ['vehicule' => $data,'photos' => $photo]);
+        return view('reservation', ['vehicule' => $data,'photos' => $photo, 'dates' => $date]);
     }
 }
