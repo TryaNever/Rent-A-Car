@@ -10,14 +10,14 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 </head>
 <body class="flex flex-col items-center">
-<h2 class="text-5xl font-bold">Select a vehicle group</h2>
+<h2 class="text-5xl font-bold my-10">Select a vehicle group</h2>
 <form class="space-y-6">
 @csrf
     <div>
         <h2 class="text-sm font-semibold mb-2">Type de véhicule</h2>
         <div class="flex flex-wrap gap-2">
             <label class="cursor-pointer">
-                <input type="radio" name="vehiculeType" value="" class="sr-only peer" checked>
+                <input type="radio" name="vehiculeType" value="" class="sr-only peer" >
                 <div class="px-4 py-2 rounded-full text-sm font-medium
                     bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                     All vehicles
@@ -26,7 +26,7 @@
 
             @foreach ($vehiculeTypes as $type)
                 <label class="cursor-pointer">
-                    <input type="radio" name="vehiculeType" value="{{ $type }}" class="sr-only peer">
+                    <input type="radio" name="vehiculeType" value="{{ $type }}" class="sr-only peer" @if($type == $filter['vehiculeType']) checked @endif>
                     <div class="px-4 py-2 rounded-full text-sm font-medium
                         bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                         {{ ucfirst($type) }}
@@ -39,7 +39,7 @@
         <h2 class="text-sm font-semibold mb-2">Type d'énergie</h2>
         <div class="flex flex-wrap gap-2">
             <label class="cursor-pointer">
-                <input type="radio" name="energieType" value="" class="sr-only peer" checked>
+                <input type="radio" name="energieType" value="" class="sr-only peer">
                 <div class="px-4 py-2 rounded-full text-sm font-medium
                     bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                     All energy type
@@ -48,7 +48,7 @@
 
             @foreach ($energieTypes as $energie)
                 <label class="cursor-pointer">
-                    <input type="radio" name="energieType" value="{{ $energie }}" class="sr-only peer">
+                    <input type="radio" name="energieType" value="{{ $energie }}" class="sr-only peer" @if($energie == $filter['energieType']) checked @endif>
                     <div class="px-4 py-2 rounded-full text-sm font-medium
                         bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                         {{ ucfirst($energie) }}
@@ -62,7 +62,7 @@
         <h2 class="text-sm font-semibold mb-2">Type de boîte</h2>
         <div class="flex flex-wrap gap-2">
             <label class="cursor-pointer">
-                <input type="radio" name="typeGear" value="" class="sr-only peer" checked>
+                <input type="radio" name="typeGear" value="" class="sr-only peer">
                 <div class="px-4 py-2 rounded-full text-sm font-medium
                     bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                     All type of gear
@@ -71,7 +71,7 @@
 
             @foreach ($typeGears as $gear)
                 <label class="cursor-pointer">
-                    <input type="radio" name="typeGear" value="{{ $gear }}" class="sr-only peer">
+                    <input type="radio" name="typeGear" value="{{ $gear }}" class="sr-only peer" @if($gear == $filter['typeGear']) checked @endif>
                     <div class="px-4 py-2 rounded-full text-sm font-medium
                         bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                         {{ ucfirst($gear) }}
@@ -104,6 +104,12 @@
         @endforeach
     </div>
 <script src="{{ asset('js/vehiculeFilter.js') }}"></script>
-
+@if(!empty($filter))
+    <script>
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        fetchFilter(data)
+    </script>
+@endif
 </body>
 </html>

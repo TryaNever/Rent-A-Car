@@ -42,6 +42,7 @@ class CarController extends Controller
 
     public function all()
     {
+
         $vehiculeType = DB::table('vehicule_type')->pluck('name');
         $energieType = DB::table('vehicule')->select('fuel_type')->distinct()->pluck('fuel_type');
         $typeGear = DB::table('vehicule')->select('transmission')->distinct()->pluck('transmission');
@@ -61,11 +62,11 @@ class CarController extends Controller
             )
             ->where('vehicule_photo.display_order', 0)
             ->get();
-
         return view('vehicules', ['vehiculeTypes' => $vehiculeType,
             'energieTypes' => $energieType,
             'typeGears' => $typeGear,
-            'vehicules' => $vehicules,]);
+            'vehicules' => $vehicules,
+            'filter' => $_POST]);
     }
 
     public function detail($id)

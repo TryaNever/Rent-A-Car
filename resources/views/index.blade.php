@@ -22,29 +22,27 @@
                 and whenever you need it.</p>
             <a href="/vehicules" class="my-5 bg-[#FF9E0C] text-white rounded-xl p-2">View all cars</a>
         </div>
-        <form method="get" class="w-[40%] m-5 bg-white rounded-2xl p-10 flex flex-col">
+        <form action="/vehicules" method="post" class="w-[40%] m-5 bg-white rounded-2xl p-10 flex flex-col">
             @csrf
             <h3 class="text-3xl text-center mb-5 font-bold">Book your car</h3>
-            <select class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
+            <select class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5" name="vehiculeType">
                 <option value="">Vehicule type</option>
                 @foreach($vehiculeTypes as $vehiculeType )
                     <option value="{{$vehiculeType}}">{{$vehiculeType}}</option>
                 @endforeach
             </select>
-            <select class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
+            <select class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5" name="energieType">
                 <option value="">Energy type</option>
                 @foreach($energieTypes as $vehiculeType )
                     <option value="{{$vehiculeType}}">{{$vehiculeType}}</option>
                 @endforeach
             </select>
-            <select class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
+            <select class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5" name="typeGear">
                 <option value="">Type of gear</option>
                 @foreach($typeGears as $vehiculeType )
                     <option value="{{$vehiculeType}}">{{$vehiculeType}}</option>
                 @endforeach
             </select>
-            <input type="date" class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
-            <input type="date" class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
             <input type="submit" value="Book now" class="bg-[#FF9E0C] text-white rounded-2xl h-10 my-8">
         </form>
     </div>
