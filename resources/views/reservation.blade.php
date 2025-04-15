@@ -29,11 +29,7 @@
         <input type="date" name="endDate" id="endDate" class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
         <div id="contain_error"></div>
         <input type="text" name="email" placeholder="Email" class="bg-[#FAFAFA] rounded-2xl my-3 h-10 px-5">
-        <label for="total" class="flex items-center space-x-2 cursor-pointer">
-            <input id="total" type="checkbox" class="peer hidden" />
-            <div class="w-6 h-6 rounded-full border-2 border-violet-700 flex items-center justify-center peer-checked:bg-violet-700"></div>
-            <span class="text-gray-800">Total Price</span>
-        </label>
+        <p id="price" class="font-bold text-[#5937E0] text-xl my-3"></p>
         <button type="submit" class="bg-[#5937E0] text-white text-center rounded-xl py-3 px-20 mt-4" id="submitBtn">Book now</button>
 
     </form>
@@ -41,7 +37,7 @@
 </div>
 <x-footer></x-footer>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>let dates = @json($dates)</script>
+<script>let dates = @json($dates); let pricePerDay = @json($vehicule[0]->price_per_day)</script>
 <script src="{{ asset('js/vehiculeCarousel.js') }}"></script>
 <script src="{{ asset('js/formDatePrice.js') }}"></script>
 </body>
