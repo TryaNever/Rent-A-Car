@@ -7,10 +7,12 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
+    <script src="https://kit.fontawesome.com/882a8425ef.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 </head>
 <body class="flex flex-col items-center">
+<x-header></x-header>
 <div class="rounded-4xl bg-[#5937E0] w-9/10 relative p-10">
     <img src="{{ asset('images/carBG.png') }}" class="absolute w-1/2 bottom-0 right-80 z-0 mx-auto blur-lg">
 

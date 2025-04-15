@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/882a8425ef.js" crossorigin="anonymous"></script>
+
 </head>
 <body class="flex flex-col items-center mx-20 min-h-screen">
+<x-header></x-header>
 <h2 class="w-full text-center text-4xl font-bold my-10">Reservation</h2>
 <div class="w-full h-[50vh] flex justify-between mt-20">
     <div class="flex flex-col justify-between w-1/2">
         <h3 class="text-3xl font-bold">{{ $vehicule[0]->brand }}</h3>
         <p class="text-[#5937E0] text-2xl font-bold">${{ $vehicule[0]->price_per_day }}<span
                     class="font-normal text-sm text-[#00000099]"> / day</span></p>
-        <img src="{{ asset('images/carBG.png') }}" alt="" class="h-[25vh] object-contain">
+        <img src="{{ $photos[0]->image_url }}" alt="" class="h-[25vh] object-contain">
         <div class="flex">
             @foreach($photos AS $photo)
                 <img src="{{ $photo->image_url }}" alt="" class="border rounded-3xl sepia mr-3 w-40 object-cover cursor-pointer img-carousel">
