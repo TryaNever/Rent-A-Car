@@ -12,12 +12,13 @@
     <script src="https://kit.fontawesome.com/882a8425ef.js" crossorigin="anonymous"></script>
 </head>
 <body class="flex flex-col items-center mx-20 min-h-sreen">
+<x-header></x-header>
 <div class="w-full h-[50vh] flex justify-between mt-20">
     <div class="flex flex-col justify-between w-1/2">
         <h3 class="text-3xl font-bold">{{ $vehicule[0]->brand }}</h3>
         <p class="text-[#5937E0] text-2xl font-bold">${{ $vehicule[0]->price_per_day }}<span
                 class="font-normal text-sm text-[#00000099]"> / day</span></p>
-        <img src="{{ asset('images/carBG.png') }}" alt="" class="h-[25vh] object-contain">
+        <img src="{{ $photos[0]->image_url }}" alt="" class="h-[25vh] object-contain">
         <div class="flex">
             @foreach($photos AS $photo)
                 <img src="{{ $photo->image_url }}" alt=""

@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Laravel</title>
-
+    <script src="https://kit.fontawesome.com/882a8425ef.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 </head>
 <body class="flex flex-col items-center">
+<x-header></x-header>
 <h2 class="text-5xl font-bold my-10">Select a vehicle group</h2>
 <form class="space-y-6">
 @csrf
@@ -17,7 +18,7 @@
         <h2 class="text-sm font-semibold mb-2">Type de véhicule</h2>
         <div class="flex flex-wrap gap-2">
             <label class="cursor-pointer">
-                <input type="radio" name="vehiculeType" value="" class="sr-only peer" >
+                <input type="radio" name="vehiculeType" value="" class="sr-only peer" checked>
                 <div class="px-4 py-2 rounded-full text-sm font-medium
                     bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                     All vehicles
@@ -26,20 +27,21 @@
 
             @foreach ($vehiculeTypes as $type)
                 <label class="cursor-pointer">
-                    <input type="radio" name="vehiculeType" value="{{ $type }}" class="sr-only peer" @if($type == $filter['vehiculeType']) checked @endif>
+                    <input type="radio" name="vehiculeType" value="{{ $type }}" class="sr-only peer" @if($type == ($filter['vehiculeType'] ?? null)) checked @endif>
                     <div class="px-4 py-2 rounded-full text-sm font-medium
-                        bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+            bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                         {{ ucfirst($type) }}
                     </div>
                 </label>
             @endforeach
+
         </div>
     </div>
     <div>
         <h2 class="text-sm font-semibold mb-2">Type d'énergie</h2>
         <div class="flex flex-wrap gap-2">
             <label class="cursor-pointer">
-                <input type="radio" name="energieType" value="" class="sr-only peer">
+                <input type="radio" name="energieType" value="" class="sr-only peer" checked>
                 <div class="px-4 py-2 rounded-full text-sm font-medium
                     bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                     All energy type
@@ -48,13 +50,14 @@
 
             @foreach ($energieTypes as $energie)
                 <label class="cursor-pointer">
-                    <input type="radio" name="energieType" value="{{ $energie }}" class="sr-only peer" @if($energie == $filter['energieType']) checked @endif>
+                    <input type="radio" name="energieType" value="{{ $energie }}" class="sr-only peer" @if($energie == ($filter['energieType'] ?? null)) checked @endif>
                     <div class="px-4 py-2 rounded-full text-sm font-medium
-                        bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+            bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                         {{ ucfirst($energie) }}
                     </div>
                 </label>
             @endforeach
+
         </div>
     </div>
 
@@ -62,7 +65,7 @@
         <h2 class="text-sm font-semibold mb-2">Type de boîte</h2>
         <div class="flex flex-wrap gap-2">
             <label class="cursor-pointer">
-                <input type="radio" name="typeGear" value="" class="sr-only peer">
+                <input type="radio" name="typeGear" value="" class="sr-only peer" checked>
                 <div class="px-4 py-2 rounded-full text-sm font-medium
                     bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                     All type of gear
@@ -71,13 +74,14 @@
 
             @foreach ($typeGears as $gear)
                 <label class="cursor-pointer">
-                    <input type="radio" name="typeGear" value="{{ $gear }}" class="sr-only peer" @if($gear == $filter['typeGear']) checked @endif>
+                    <input type="radio" name="typeGear" value="{{ $gear }}" class="sr-only peer" @if($gear == ($filter['typeGear'] ?? null)) checked @endif>
                     <div class="px-4 py-2 rounded-full text-sm font-medium
-                        bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
+            bg-gray-100 text-black peer-checked:bg-violet-600 peer-checked:text-white">
                         {{ ucfirst($gear) }}
                     </div>
                 </label>
             @endforeach
+
         </div>
     </div>
 </form>
@@ -99,10 +103,11 @@
                         <p>{{ $vehicule->fuel_type }}</p>
                         <p>{{ $vehicule->air_conditionne }}</p></div>
                 </div>
-                <a href="/vehicule/{{ $vehicule->id }}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
+                <a href="/vehicules/{{ $vehicule->id }}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
             </div>
         @endforeach
     </div>
+<x-footer></x-footer>
 <script src="{{ asset('js/vehiculeFilter.js') }}"></script>
 @if(!empty($filter))
     <script>
