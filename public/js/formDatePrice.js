@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function spawnPrice() {
+        let pPrice = document.querySelector('#price')
+
+        let dif = new Date(document.querySelector('#endDate').value) - new Date(document.querySelector('#startDate').value);
+        console.log(dif)
+    }
+
     let reservedDates = dates;
     let today = new Date().toISOString().split('T')[0];
     document.querySelector('#startDate').value = today;
@@ -60,6 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         createError('')
-
+        spawnPrice('')
     }
 });

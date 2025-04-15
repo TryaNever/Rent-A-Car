@@ -34,6 +34,7 @@
             <div class="w-6 h-6 rounded-full border-2 border-violet-700 flex items-center justify-center peer-checked:bg-violet-700"></div>
             <span class="text-gray-800">Total Price</span>
         </label>
+        <p id="price" class="font-bold text-[#5937E0] text-2xl"></p>
         <button type="submit" class="bg-[#5937E0] text-white text-center rounded-xl py-3 px-20 mt-4" id="submitBtn">Book now</button>
 
     </form>
