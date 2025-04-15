@@ -22,7 +22,7 @@ function sendDatabase(data) {
         })
         .then(json => {
             let containerResponse = document.querySelector('#info');
-            containerResponse.innerHTML = ""; // Réinitialiser le contenu du conteneur
+            containerResponse.innerHTML = "";
             if (json.success) {
                 let pSuccess = document.createElement('p');
                 pSuccess.textContent = json.success;
@@ -41,9 +41,7 @@ function sendDatabase(data) {
             }
         })
         .catch(error => {
-            // Affiche une erreur dans la console si une exception est levée
             console.error('Erreur :', error);
-            alert('Erreur lors de la soumission du formulaire, veuillez vérifier la console pour plus de détails.');
         });
 }
 
