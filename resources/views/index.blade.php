@@ -50,19 +50,19 @@
     </div>
 </div>
 
-<div class="w-screen flex justify-between mt-10">
-    <div class="w-1/4 flex flex-col items-center ">
-        <img src="{{ asset('images/carBG.png') }}" alt="voiture bleu">
+<div class="w-screen flex justify-around mt-10">
+    <div class="w-1/4 flex flex-col items-center">
+        <i class="fa-solid fa-location-dot text-8xl my-5"></i>
         <h3 class="text-center font-semibold text-xl">Availability</h3>
         <p class="text-center">A wide range of vehicles, available anytime, wherever you need them.</p>
     </div>
-    <div class="w-1/4 flex flex-col items-center ">
-        <img src="{{ asset('images/carBG.png') }}" alt="voiture bleu">
+    <div class="w-1/4 flex flex-col items-center">
+        <i class="fa-solid fa-car-side text-8xl my-5"></i>
         <h3 class="text-center font-semibold text-xl">Comfort</h3>
         <p class="text-center">Enjoy a smooth, relaxing drive with clean, modern, well-equipped cars.</p>
     </div>
-    <div class="w-1/4 flex flex-col items-center ">
-        <img src="{{ asset('images/carBG.png') }}" alt="voiture bleu">
+    <div class="w-1/4 flex flex-col items-center">
+        <i class="fa-solid fa-wallet text-8xl my-5"></i>
         <h3 class="text-center font-semibold text-xl">Savings</h3>
         <p class="text-center">Smart prices, no hidden fees — only pay when you actually drive.</p>
     </div>

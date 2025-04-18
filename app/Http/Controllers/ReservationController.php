@@ -34,7 +34,7 @@ class ReservationController extends Controller
             'total_price' => $priceTotal
         ]);
 
-            Mail::to('apernette@edenschool.fr')->send(new ReservationVehicule($validatedData['id']));
+            Mail::to($validatedData['email'])->send(new ReservationVehicule($validatedData['id']));
 
         return response()->json(['success' => 'You reservation is confirmed']);
     }
