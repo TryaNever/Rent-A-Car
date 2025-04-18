@@ -86,7 +86,7 @@
     </div>
 </form>
 
-    <div class="w-[80%] flex flex-wrap justify-between" id="containerVehicules">
+    <div class="w-[80%] flex flex-wrap mt-10" id="containerVehicules">
         @foreach($vehicules AS $vehicule)
             <div class="w-3/10 p-4 m-4 bg-[#FAFAFA] rounded-2xl flex flex-col capitalize">
                 <img src="{{ $vehicule->photo }}" alt="{{ $vehicule->model }}">

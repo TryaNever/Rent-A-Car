@@ -28,7 +28,7 @@
     </div>
     <div class="w-1/2">
         <h3 class="text-2xl font-semibold">Technical Specification</h3>
-        <div class="flex flex-wrap justify-between ">
+        <div class="flex flex-wrap justify-between mb-5">
             <div class="w-2/7 bg-[#FAFAFA] p-5 rounded-2xl my-5">
                 <i class="fa-solid fa-gears"></i>
                 <p>Gear Box</p>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <a href="/vehicules/{{ $vehicule[0]->id }}/reservation"
-           class="bg-[#5937E0] text-white text-center rounded-xl py-3 px-20 mt-4">Rent a car</a>
+           class="bg-[#5937E0] text-white text-center rounded-xl py-3 px-20 mt-10">Rent a car</a>
         <div class="mt-10">
             <h3 class="text-2xl font-semibold">Car Equipement</h3>
             <div class="flex flex-wrap w-1/2">

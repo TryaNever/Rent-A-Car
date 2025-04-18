@@ -40,7 +40,7 @@ function fetchFilter(data) {
                         <p>${vehicule.air_conditionne}</p>
                     </div>
                 </div>
-                <a href="/vehicule/${vehicule.id}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
+                <a href="/vehicules/${vehicule.id}" class="bg-[#5937E0] text-white text-center rounded-xl py-2 mt-5">view details</a>
             </div>
         `;
             })
